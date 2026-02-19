@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "buques_cisterna")
-@PrimaryKeyJoinColumn(name = "buque_imo")
+@PrimaryKeyJoinColumn(name = "codigo_imo")
 public class BuqueCisterna extends Buque {
 
     @Column(name = "capacidad_carga_m3")

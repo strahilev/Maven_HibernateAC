@@ -61,4 +61,6 @@ public abstract class Buque {
 	public Double getCaladoMaximo() {
 		return caladoMaximo;
 	}
+
+    public List<IntervencionAstillero> getIntervenciones() { return intervenciones; }
 }
