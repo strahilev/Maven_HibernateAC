@@ -58,7 +58,7 @@ public class ShippingService {
     public List<Buque> listarFlota() {
         EntityManager em = JPAUtil.getEntityManager();
         try {
-            return em.createQuery("FROM Buque", Buque.class).getResultList();
+        	return em.createQuery("SELECT b FROM Buque b WHERE TYPE(b) IN (Portacontenedores, BuqueCisterna)", Buque.class).getResultList();
         } finally { em.close(); }
     }
 

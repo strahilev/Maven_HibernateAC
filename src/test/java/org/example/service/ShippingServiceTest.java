@@ -169,7 +169,6 @@ public class ShippingServiceTest {
     
     
 
-    // Nota para Certificaciones: 
-    // Para probar "Gestión de Certificaciones" [cite: 26] y "Consulta de Competencias"[cite: 27], 
-    // se requeriría instanciar y cruzar datos específicos que puedes añadir si tu BD está limpia.
+   
+   
 }
