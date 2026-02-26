@@ -154,4 +154,21 @@ public class ShippingService {
             return (total != null) ? total : 0.0;
         } finally { em.close(); }
     }
+
+	public void eliminarBuque(String  imo) {
+		EntityManager em = JPAUtil.getEntityManager();
+	
+		 try {
+	            em.getTransaction().begin();
+	            Buque b = em.find(Buque.class, imo);
+	            em.remove(b);
+	            em.getTransaction().commit();
+	            logger.info("Buque eliminado: {}", b.getNombre());
+	        } catch (Exception e) {
+	            if (em.getTransaction().isActive()) em.getTransaction().rollback();
+	            logger.error("Error al eliminar buque: " + e.getMessage());
+	            throw e;
+	        } finally { em.close(); }
+		
+	}
 }

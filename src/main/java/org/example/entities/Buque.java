@@ -32,6 +32,14 @@ public abstract class Buque {
 	public Buque() {
 	}
 
+	public Buque(String codigoIMO, String nombre, Double caladoMaximo) {
+		super();
+		this.codigoIMO = codigoIMO;
+		this.nombre = nombre;
+		this.caladoMaximo = caladoMaximo;
+		
+	}
+
 	public void setCaladoMaximo(Double caladoMaximo) {
 		if (caladoMaximo < 5 || caladoMaximo > 40) {
 			String errorMsg = "ERROR DE VALIDACIÓN: El calado debe estar entre 5 y 40. Valor: " + caladoMaximo;

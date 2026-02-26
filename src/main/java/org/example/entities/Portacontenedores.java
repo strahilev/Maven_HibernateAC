@@ -14,8 +14,19 @@ public class Portacontenedores extends Buque {
     private String tipoGrua;
 
     public Portacontenedores() {}
+    
 
-    public Integer getNumeroMaximoTEUs() { return numeroMaximoTEUs; }
+ 
+    
+  
+    public Portacontenedores(String codigoIMO, String nombre, Double caladoMaximo,Integer numeroMaximoTEUs, String tipoGrua) {
+    	super(codigoIMO,nombre,caladoMaximo);
+ 		this.numeroMaximoTEUs = numeroMaximoTEUs;
+ 		this.tipoGrua = tipoGrua;
+ 	}
+
+
+	public Integer getNumeroMaximoTEUs() { return numeroMaximoTEUs; }
     public void setNumeroMaximoTEUs(Integer numeroMaximoTEUs) { this.numeroMaximoTEUs = numeroMaximoTEUs; }
 
     public String getTipoGrua() { return tipoGrua; }

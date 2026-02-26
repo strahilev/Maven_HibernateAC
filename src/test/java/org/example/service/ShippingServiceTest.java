@@ -20,10 +20,13 @@ public class ShippingServiceTest {
         service = new ShippingService();
         JPAUtil.getEntityManagerFactory();
     }
+   
+    
 
     @AfterAll
     public static void tearDown() {
         // Cerramos la conexión al finalizar todos los tests
+    	
         JPAUtil.shutdown();
     }
 
@@ -165,6 +168,34 @@ public class ShippingServiceTest {
         assertFalse(certificados.isEmpty(), "La lista no debe estar vacía tras la vinculación");
         assertEquals(1, certificados.size(), "Debería haber exactamente 1 capitán certificado para este buque");
         assertEquals("Hector Barbossa", certificados.get(0).getNombre(), "El nombre del capitán no coincide");
+    }
+    @Test
+    public void testEliminarBuqueSinIntervenciones() {
+        // 1. Preparar: Creamos un buque nuevo que sabemos que no tiene historial
+        Buque nuevo = new Portacontenedores("IMO9999", "Barco de Prueba", 10.0,15,"Normal");
+        service.registrarBuque(nuevo); // Método que ya tienen hecho
+        
+        // 2. Ejecutar: Intentar borrar
+        service.eliminarBuque(nuevo.getCodigoIMO());
+        
+        // 3. Verificar: El buque ya no debe existir
+        Buque recuperado = service.buscarPorIMO("IMO9999");
+        assertNull( recuperado,"El buque debería haber sido eliminado");
+    }
+
+    @Test
+    public void testActualizarCaladoEmergencia() {
+        // 1. Preparar: Creamos un buque con un calado alto (ej: 30m)
+        String imo = "IMO7777";
+        Buque buqueParaResetear = new Portacontenedores(imo, "Buque Test Emergencia", 30.0,15,"Normal");
+        service.registrarBuque(buqueParaResetear);
+        
+        // 2. Ejecutar: Llamamos al método que resetea a valor de seguridad (5m)
+        service.actualizarCalado(imo,5.0);
+        
+        // 3. Verificar: Recuperamos de nuevo y comprobamos que ahora es 5.0
+        Buque recuperado = service.buscarPorIMO(imo);
+        assertEquals( 5.0, recuperado.getCaladoMaximo(), 0.01,"El calado debe haberse reseteado a 5.0");
     }
     
     
