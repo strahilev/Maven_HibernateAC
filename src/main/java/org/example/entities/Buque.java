@@ -11,7 +11,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "buques")
 @Check(constraints = "calado_maximo >= 5 AND calado_maximo <= 40")
-public abstract class Buque {
+public class Buque {
 	private static final Logger logger = LogManager.getLogger(Buque.class);
 
 	@Id
@@ -37,7 +37,7 @@ public abstract class Buque {
 		this.codigoIMO = codigoIMO;
 		this.nombre = nombre;
 		this.caladoMaximo = caladoMaximo;
-		
+
 	}
 
 	public void setCaladoMaximo(Double caladoMaximo) {
@@ -70,5 +70,7 @@ public abstract class Buque {
 		return caladoMaximo;
 	}
 
-    public List<IntervencionAstillero> getIntervenciones() { return intervenciones; }
+	public List<IntervencionAstillero> getIntervenciones() {
+		return intervenciones;
+	}
 }

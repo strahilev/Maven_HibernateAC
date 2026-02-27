@@ -9,11 +9,11 @@ import org.apache.logging.log4j.Logger;
 public class JPAUtil {
     private static final Logger logger = LogManager.getLogger(JPAUtil.class);
     
-    // El nombre debe coincidir EXACTAMENTE con el de persistence.xml
+    
     private static final String PERSISTENCE_UNIT_NAME = "unidad-persistencia";
     private static EntityManagerFactory factory;
 
-    // Método para obtener la factoría (Singleton)
+    
     public static EntityManagerFactory getEntityManagerFactory() {
         if (factory == null) {
             try {
@@ -27,12 +27,12 @@ public class JPAUtil {
         return factory;
     }
 
-    // Método de utilidad para obtener un EntityManager nuevo
+  
     public static EntityManager getEntityManager() {
         return getEntityManagerFactory().createEntityManager();
     }
 
-    // Método para cerrar la factoría al apagar la app
+  
     public static void shutdown() {
         if (factory != null && factory.isOpen()) {
             factory.close();

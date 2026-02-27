@@ -15,7 +15,7 @@ public class AppTest {
         p.setCodigoIMO("IMO1234567");
         p.setNombre("Lázaro Express");
         
-        // Esto debe lanzar excepción por ser menor a 5
+        
         assertThrows(IllegalArgumentException.class, () -> p.setCaladoMaximo(3.0));
     }
 

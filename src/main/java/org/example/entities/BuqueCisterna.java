@@ -7,17 +7,28 @@ import jakarta.persistence.*;
 @PrimaryKeyJoinColumn(name = "codigo_imo")
 public class BuqueCisterna extends Buque {
 
-    @Column(name = "capacidad_carga_m3")
-    private Double capacidadCarga;
+	@Column(name = "capacidad_carga_m3")
+	private Double capacidadCarga;
 
-    @Column(name = "tipo_doble_casco")
-    private String tipoDobleCasco;
+	@Column(name = "tipo_doble_casco")
+	private String tipoDobleCasco;
 
-    public BuqueCisterna() {}
+	public BuqueCisterna() {
+	}
 
-    public Double getCapacidadCarga() { return capacidadCarga; }
-    public void setCapacidadCarga(Double capacidadCarga) { this.capacidadCarga = capacidadCarga; }
+	public Double getCapacidadCarga() {
+		return capacidadCarga;
+	}
 
-    public String getTipoDobleCasco() { return tipoDobleCasco; }
-    public void setTipoDobleCasco(String tipoDobleCasco) { this.tipoDobleCasco = tipoDobleCasco; }
+	public void setCapacidadCarga(Double capacidadCarga) {
+		this.capacidadCarga = capacidadCarga;
+	}
+
+	public String getTipoDobleCasco() {
+		return tipoDobleCasco;
+	}
+
+	public void setTipoDobleCasco(String tipoDobleCasco) {
+		this.tipoDobleCasco = tipoDobleCasco;
+	}
 }
